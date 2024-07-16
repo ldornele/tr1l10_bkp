@@ -1,0 +1,14 @@
+oc new-project flask-trilio
+oc project
+oc get pvc
+oc apply -f pvc.yaml
+oc get pvc
+oc get deploy
+oc apply -f deploy.yaml
+oc get deploy
+oc exec -it <pod_name> -n flask-trilio -- sh
+ls -lt ./data/test123/
+##total 24
+##-rw-r--r--. 1 1001250000 root 30 Jul  8 03:37 temp3.txt
+##-rw-r--r--. 1 1001250000 root 20 Jul  8 03:37 temp2.txt
+##-rw-r--r--. 1 1001250000 root  7 Jul  8 03:35 temp1.txt

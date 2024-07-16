@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-app
+  namespace: flask-trilio
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flask-app
+  template:
+    metadata:
+      labels:
+        app: flask-app
+    spec:
+      containers:
+      - name: flask-hello
+        image: quay.io/ldornele/flask_hello:latest
+        ports:
+        - containerPort: 5000
+        volumeMounts:
+        - mountPath: /app/data/test123
+          name: nfs-storage        
+      imagePullPolicy: Never
+      volumes:
+      - name: nfs-storage
+        persistentVolumeClaim:
+          claimName: nfs-flask-pvc      

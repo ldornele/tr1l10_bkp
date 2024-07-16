@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nfs-flask-pvc
+  namespace: flask-trilio
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 2Gi
+  storageClassName: powerstore-nfs1-ocp-sc
+  volumeMode: Filesystem
